@@ -46,4 +46,4 @@ If the pull request is accepted, your branch will be merged with the master bran
 
 If you need some more help with git commands, please visit [Git Command Tutorial](https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html)
 
-If you have any questions or need more help, please contact the Project Lead {username@csu.fullerton.edu}
+If you have any questions or need more help, please contact the Zachary Owen zowen@csu.fullerton.edu
