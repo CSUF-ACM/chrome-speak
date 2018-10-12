@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "Chrome Speak",
+    "version": "1.0",
+    "description": "An extension that enables people to control Chrome with their voice.",
+    "icons": {
+        "128": "logo128.jpg",
+        "48": "logo48.jpg",
+        "16": "logo16.jpg"
+    },
+    "browser_action":{
+        "default_icon": "logo16.jpg",
+        "default_popup": "popup.html"
+    }
+}

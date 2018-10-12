@@ -1,0 +1,40 @@
+{
+  "deploy_settings": {
+    "default": {
+      "skill_id": "amzn1.ask.skill.490015ce-96de-4fd3-bea2-3037b7edb349",
+      "was_cloned": false,
+      "merge": {
+        "manifest": {
+          "apis": {
+            "custom": {
+              "endpoint": {
+                "uri": "ask-custom-chrome_speak_alexa_skill-default"
+              }
+            }
+          }
+        }
+      },
+      "resources": {
+        "manifest": {
+          "eTag": "456fc2a79f7f63ce58610afa462bacf3"
+        },
+        "interactionModel": {
+          "en-US": {
+            "eTag": "c489cecd6bdb7d06066e821d3bbc1a93"
+          }
+        },
+        "lambda": [
+          {
+            "arn": "arn:aws:lambda:us-east-1:617581747074:function:ask-custom-chrome_speak_alexa_skill-default",
+            "functionName": "arn:aws:lambda:us-east-1:617581747074:function:ask-custom-chrome_speak_alexa_skill-default",
+            "awsRegion": "us-east-1",
+            "alexaUsage": [
+              "custom/default"
+            ],
+            "revisionId": "afa2df89-ad7f-4c1b-b67c-1d9c8244ce95"
+          }
+        ]
+      }
+    }
+  }
+}
