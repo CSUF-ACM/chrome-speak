@@ -7,9 +7,11 @@ The goal of this project is to help people with disabilities surf the internet u
 ### Team Lead
 Zachary Owen zowen@csu.fullerton.edu
 #### Team Members
-  1. Member one
-  2. Member two
-  3. Member three
+  1. Abhinav Arora
+  2. K-ennethA
+  3. Janthony125
+  4. jswerrett
+  5. 
 
 ## Project Technologies
 
