@@ -11,7 +11,7 @@ Zachary Owen zowen@csu.fullerton.edu
   2. K-ennethA
   3. Janthony125
   4. jswerrett
-  5. 
+  5. Bryan CAstro
 
 ## Project Technologies
 
