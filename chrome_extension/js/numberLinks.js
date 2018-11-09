@@ -1,3 +1,0 @@
-/*
-    Script to add numbers to hyperlink so user can decide which one to choose.
-*/
