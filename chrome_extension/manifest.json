@@ -17,7 +17,7 @@
             "matches": [
                 "<all_urls>"
             ],
-            "all_frames": true,
+            //"all_frames": true,
             "js":["js/number_links.js"]
         }
     ],
