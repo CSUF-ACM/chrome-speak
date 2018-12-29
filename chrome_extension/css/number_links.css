@@ -1,0 +1,16 @@
+.chrome-speak-number-links {
+    display:inline-block;
+    text-align: center;
+    
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 2px;
+    
+    border: 2px solid;
+    border: 2px solid;
+    border-radius: 5px;
+    background: gold;
+    
+    font-family: sans-serif;
+    font-size: 18px;
+}
