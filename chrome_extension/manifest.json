@@ -14,10 +14,7 @@
     },
     "content_scripts":[
         {
-            "matches": [
-                "<all_urls>"
-            ],
-            //"all_frames": true,
+            "matches": ["<all_urls>"],
             "css":["css/number_links.css"],
             "js":["js/number_links.js"]
         }
