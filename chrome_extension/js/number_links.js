@@ -18,11 +18,21 @@ function remove_links() {
     var already_numbered = document.querySelector(".chrome-speak-number-links");
 
     if(already_numbered) {
-        var number_links = document.querySelectorAll(".chrome-speak-number-links");
+        var numbered_link = document.querySelectorAll(".chrome-speak-number-links");
         
-        for (var i = 0; i < number_links.length; ++i) {
-            number_links[i].remove();
+        for (var i = 0; i < numbered_link.length; ++i) {
+            numbered_link[i].remove();
         }
+    }
+}
+
+function access_link(link_number) {
+    var anchor = document.querySelectorAll("A");
+
+    if (link_number < anchor.length && link_number > 0) {
+        window.open(anchor[link_number - 1]);
+    } else {
+        alert("Out of range");
     }
 }
 
@@ -34,5 +44,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
         number_links();
     } else if (message.command == "cancel links") {
         remove_links();
+    } else if (message.command == "access link") {
+        access_link(message.link_number);
     }
 });
