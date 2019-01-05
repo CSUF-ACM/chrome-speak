@@ -30,7 +30,11 @@ function access_link(link_number) {
     var anchor = document.querySelectorAll("A");
 
     if (link_number < anchor.length && link_number > 0) {
-        window.open(anchor[link_number - 1], anchor[link_number - 1].target);
+        if(anchor[link_number - 1].target == "") {
+            window.open(anchor[link_number - 1], "_top");
+        } else {
+            window.open(anchor[link_number - 1], anchor[link_number - 1].target);
+        }
     } else {
         alert("Out of range");
     }
