@@ -19,7 +19,7 @@ function remove_links() {
 
     if(already_numbered) {
         var numbered_link = document.querySelectorAll(".chrome-speak-number-links");
-        
+
         for (var i = 0; i < numbered_link.length; ++i) {
             numbered_link[i].remove();
         }

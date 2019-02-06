@@ -17,6 +17,10 @@
             "matches": ["<all_urls>"],
             "css":["css/number_links.css"],
             "js":["js/number_links.js"]
+        },
+        {
+            "matches": ["<all_urls>"],
+            "js":["js/scroll_content.js"]
         }
     ],
     "permissions": [
