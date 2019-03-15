@@ -17,17 +17,11 @@ function toTop() {
   window.scrollTo(0, 0);
 }
 
-// AUTOSCROLL STILL HAS CONTINUOUS SCROLL BUG
 function autoBottom() {
-  window.scrollBy(0, 3);
-  window.onscroll = function(ev) {
-    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
-      console.log("Bottom Reached.");
-      window.scrollBy(0, 0);
-    }
-    else {
-      scrolldelay = setTimeout( 'autoBottom()' , 10);
-    }
+  window.scrollBy(0, 2);
+  if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) { //condition for bottom of page
+    console.log("Bottom Reached.");
+    clearInterval(scrolldelay);  // stops the autoscrool setInterval func
   }
 }
 
@@ -42,17 +36,18 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {  
   }
   else if (message.command == 'scroll to bottom') {
     toBottom();
-    console.log("Scrolling to Bottom of Page.")
+    console.log("Scrolling to Bottom of Page.");
   }
   else if (message.command == 'scroll to top') {
     toTop();
-    console.log("Scrolling to Top of Page.")
+    console.log("Scrolling to Top of Page.");
   }
   else if (message.command == 'auto scroll down') {
-    autoBottom();
-    console.log("Auto Scrolling to Bottom.")
+    console.log("Auto Scrolling to Bottom.");
+    scrolldelay = setInterval( 'autoBottom()', 12); //to continually run autoscroll
   }
+
   else {
-    console.log('Error receiving message.')
+    console.log('Error receiving message.');
   }
 });
