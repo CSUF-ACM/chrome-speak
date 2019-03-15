@@ -21,7 +21,7 @@ function autoBottom() {
   window.scrollBy(0, 2);
   if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) { //condition for bottom of page
     console.log("Bottom Reached.");
-    clearInterval(scrolldelay);  // stops the autoscrool setInterval func
+    clearInterval(scrolldelay);  // stops the autoscroll setInterval func
   }
 }
 
