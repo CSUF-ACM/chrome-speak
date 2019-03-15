@@ -25,6 +25,14 @@ function autoBottom() {
   }
 }
 
+function autoTop() {
+  window.scrollBy(0, -2);
+  if (window.scrollY == 0) {  // if distance from top of page == 0
+    console.log("Top Reached.");
+    clearInterval(scrolldelay);
+  }
+}
+
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {    //receives message, anon func pass 3 arg.
   if(message.command == 'scroll down') {                                     // message is object. use '.command' to receive obj sent from popup.js
     scrollDown();
@@ -46,7 +54,10 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {  
     console.log("Auto Scrolling to Bottom.");
     scrolldelay = setInterval( 'autoBottom()', 12); //to continually run autoscroll
   }
-
+  else if (message.command == 'auto scroll up') {
+    console.log("Auto Scrolling to Top.");
+    scrolldelay = setInterval('autoTop()', 12); // runs autscroll up
+  }
   else {
     console.log('Error receiving message.');
   }
