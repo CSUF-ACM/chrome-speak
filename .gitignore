@@ -1,1 +1,7 @@
 chrome_speak_alexa_skill/lambda/custom/node_modules
+aws_iot/node_modules
+aws_iot/public.pem.key
+aws_iot/config/AmazonRootCA1.pem.txt
+aws_iot/config/certificate.pem.crt
+aws_iot/config/private.pem.key
+aws_iot/.vscode
