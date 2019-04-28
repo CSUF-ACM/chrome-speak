@@ -1,4 +1,4 @@
-chrome_speak_alexa_skill/lambda/custom/node_modules
+alexa_skill/lambda/custom/node_modules
 aws_iot/node_modules
 aws_iot/public.pem.key
 aws_iot/config/AmazonRootCA1.pem.txt

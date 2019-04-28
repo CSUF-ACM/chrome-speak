@@ -25,14 +25,14 @@
           ]
         },
         {
-          "name": "HelloWorldIntent",
+          "name": "NumberLinksIntentHandler",
           "slots": [
 
           ],
           "samples": [
-            "hello",
-            "say hello",
-            "say hello world"
+            "Number links",
+            "Number the links",
+            "Enumerate links"
           ]
         }
       ]
