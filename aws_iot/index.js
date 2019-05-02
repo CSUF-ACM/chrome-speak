@@ -1,16 +1,9 @@
 var awsIot = require('aws-iot-device-sdk');
-var io = require('socket.io').listen(3000);
 // Replace the values of '<YourUniqueClientIdentifier>' and '<YourCustomEndpoint>'
 // with a unique client identifier and custom host endpoint provided in AWS IoT.
 // NOTE: client identifiers must be unique within your AWS account; if a client attempts
 // to connect with a client identifier which is already in use, the existing
 // connection will be terminated.*/
-
-console.log(io);
-
-io.on('connection', function (socket) {
-  console.log('socket connected');
-});
 
 var device = awsIot.device({
   keyPath: './config/private.pem.key',
@@ -25,7 +18,6 @@ var device = awsIot.device({
 // documentation.
 //
 
-// console.log(device);
 device
   .on('connect', function () {
     console.log('connect');
