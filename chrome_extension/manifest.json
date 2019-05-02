@@ -12,8 +12,11 @@
         "default_icon": "logo16.jpg",
         "default_popup": "popup.html"
     },
+    "background":{
+        "scripts": ["js/socket.io-client-2.2.0/dist/socket.io.js","js/client.js"]
+    },
     "content_scripts":[
-        {
+        {   
             "matches": ["<all_urls>"],
             "css":["css/number_links.css"],
             "js":["js/number_links.js"]
