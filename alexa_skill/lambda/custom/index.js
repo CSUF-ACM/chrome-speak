@@ -10,7 +10,7 @@ const LaunchRequestHandler = {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
   handle (handlerInput) {
-    const speechText = 'Welcome to the Alexa Skills Kit, you can say hello!';
+    const speechText = 'Welcome to Chrome Speak.';
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -22,10 +22,40 @@ const LaunchRequestHandler = {
 const NumberLinksIntentHandler = {
   canHandle (handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
-    handlerInput.requestEnvelope.request.intent.name === 'HelloWorldIntent';
+    handlerInput.requestEnvelope.request.intent.name === 'NumberLinksIntent';
   },
   handle (handlerInput) {
-    const speechText = 'Welcome to Chrome Speak!';
+    const speechText = 'Enumerating links.';
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .withSimpleCard('Chrome Speak', speechText)
+      .getResponse();
+  }
+};
+
+const AccessLinkIntentHandler = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+    handlerInput.requestEnvelope.request.intent.name === 'AccessLinkIntent';
+  },
+  handle (handlerInput) {
+    const speechText = 'Removing link numbers.';
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .withSimpleCard('Chrome Speak', speechText)
+      .getResponse();
+  }
+};
+
+const CancelLinksIntentHandler = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+    handlerInput.requestEnvelope.request.intent.name === 'CancelLinksIntent';
+  },
+  handle (handlerInput) {
+    const speechText = 'Removing link numbers.';
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -40,7 +70,7 @@ const HelpIntentHandler = {
     handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
   },
   handle (handlerInput) {
-    const speechText = 'Provide help statement';
+    const speechText = 'Help menu still in development.';
 
     return handlerInput.responseBuilder
       .speak(speechText)

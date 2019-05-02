@@ -20,7 +20,7 @@
         },
         "interactionModel": {
           "en-US": {
-            "eTag": "e3b422b08ecbc613441450803453a39c"
+            "eTag": "4e362f401bc9b2c0b13042198eb1bf05"
           }
         },
         "lambda": [
@@ -33,7 +33,7 @@
             "codeUri": "lambda/custom",
             "functionName": "arn:aws:lambda:us-east-1:617581747074:function:ask-custom-chrome_speak_alexa_skill-default",
             "handler": "index.handler",
-            "revisionId": "754424c7-3698-4919-835c-fc4c45a7e855",
+            "revisionId": "b2d16c51-1899-485c-af29-5daba02a6a2b",
             "runtime": "nodejs8.10"
           }
         ]
