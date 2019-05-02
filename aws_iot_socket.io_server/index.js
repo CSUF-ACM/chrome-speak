@@ -25,7 +25,7 @@ var device = awsIot.device({
       host: '<YourCustomEndpoint>'
 });
 
-
+//
 //device connects to AWS IoT
 // Subscribe to a topic(e.g. topic_1)
 device

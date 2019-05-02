@@ -5,3 +5,4 @@ aws_iot/config/AmazonRootCA1.pem.txt
 aws_iot/config/certificate.pem.crt
 aws_iot/config/private.pem.key
 aws_iot/.vscode
+aws_iot_socket.io_server/node_modules
