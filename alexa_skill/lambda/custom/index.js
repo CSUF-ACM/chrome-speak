@@ -20,6 +20,7 @@ const send_message_to_chrome = (chrome_message) => {
 
 const LaunchRequestHandler = {
   canHandle (handlerInput) {
+    delete handlerInput.requestEnvelope.session
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
   handle (handlerInput) {
@@ -42,10 +43,10 @@ const NumberLinksIntentHandler = {
 
     send_message_to_chrome('message: number links');
 
-    return handlerInput.responseBuilder
-      .speak(speechText)
-      .withSimpleCard('Chrome Speak', speechText)
-      .getResponse();
+    response = handlerInput.responseBuilder.speak(speechText).reprompt(speechText).getResponse();
+    // response = handlerInput.responseBuilder.getResponse();
+    // delete body.response.shouldEndSession;
+    return response;
   }
 };
 
@@ -61,7 +62,7 @@ const CancelLinksIntentHandler = {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('Chrome Speak', speechText)
+      .reprompt(speechText)
       .getResponse();
   }
 };
@@ -78,7 +79,7 @@ const AccessLinkIntentHandler = {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('Chrome Speak', speechText)
+      .reprompt(speechText)
       .getResponse();
   }
 };
@@ -95,7 +96,7 @@ const RefreshIntentHandler = {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('Chrome Speak', speechText)
+      .reprompt(speechText)
       .getResponse();
   }
 };
@@ -112,7 +113,7 @@ const PreviousPageIntentHandler = {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('Chrome Speak', speechText)
+      .reprompt(speechText)
       .getResponse();
   }
 };
@@ -129,7 +130,7 @@ const ForwardPageIntentHandler = {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('Chrome Speak', speechText)
+      .reprompt(speechText)
       .getResponse();
   }
 };
@@ -145,7 +146,6 @@ const HelpIntentHandler = {
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withSimpleCard('Chrome Speak', speechText)
       .getResponse();
   },
 };
@@ -161,7 +161,6 @@ const CancelAndStopIntentHandler = {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('Chrome Speak', speechText)
       .getResponse();
   }
 };
@@ -185,8 +184,8 @@ const ErrorHandler = {
     console.log(`Error handled: ${error.message}`);
 
     return handlerInput.responseBuilder
-      .speak('Sorry, I can\'t understand the command. Please say again.')
-      .reprompt('Sorry, I can\'t understand the command. Please say again.')
+      .speak('Sorry, I I\'m a little nervous right now. What was the command again?')
+      .reprompt(speechText)
       .getResponse();
   }
 };
