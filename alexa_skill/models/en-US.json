@@ -25,7 +25,7 @@
           ]
         },
         {
-          "name": "NumberLinksIntentHandler",
+          "name": "NumberLinksIntent",
           "slots": [
 
           ],
@@ -33,6 +33,57 @@
             "Number links",
             "Number the links",
             "Enumerate links"
+          ]
+        },
+        {
+          "name": "CancelLinksIntent",
+          "slots": [
+
+          ],
+          "samples": [
+            "cancel",
+            "cancel links",
+            "nevermind"
+          ]
+        },
+        {
+          "name": "AccessLinkIntent",
+          "slots": [
+
+          ],
+          "samples": [
+            "access",
+            "open"
+          ]
+        },
+        {
+          "name": "RefreshIntent",
+          "slots": [
+
+          ],
+          "samples": [
+            "refresh",
+            "reload"
+          ]
+        },
+        {
+          "name": "PreviousPageIntent",
+          "slots": [
+
+          ],
+          "samples": [
+            "Back",
+            "Previous page"
+          ]
+        },
+        {
+          "name": "ForwardPageIntent",
+          "slots": [
+
+          ],
+          "samples": [
+            "forward",
+            "forward page"
           ]
         }
       ]
