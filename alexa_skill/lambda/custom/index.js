@@ -20,12 +20,10 @@ const send_message_to_chrome = (chrome_message) => {
 
 const LaunchRequestHandler = {
   canHandle (handlerInput) {
-    // If this statement returns true, then execute the code in "handle,"
-    // else if (see exports.handler down below)
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
   handle (handlerInput) {
-    const speechText = 'Welcome to the Alexa Skills Kit, you can say hello!';
+    const speechText = 'Welcome to Chrome Speak!';
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -37,10 +35,97 @@ const LaunchRequestHandler = {
 const NumberLinksIntentHandler = {
   canHandle (handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
-    handlerInput.requestEnvelope.request.intent.name === 'HelloWorldIntent';
+    handlerInput.requestEnvelope.request.intent.name === 'NumberLinksIntent';
   },
   handle (handlerInput) {
-    const speechText = 'Welcome to Chrome Speak!';
+    const speechText = 'Links numbered!';
+
+    send_message_to_chrome('message: number links');
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .withSimpleCard('Chrome Speak', speechText)
+      .getResponse();
+  }
+};
+
+const CancelLinksIntentHandler = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+    handlerInput.requestEnvelope.request.intent.name === 'CancelLinksIntent';
+  },
+  handle (handlerInput) {
+    const speechText = 'Links canceled!';
+
+    send_message_to_chrome('message: cancel links');
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .withSimpleCard('Chrome Speak', speechText)
+      .getResponse();
+  }
+};
+
+const AccessLinkIntentHandler = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+    handlerInput.requestEnvelope.request.intent.name === 'AccessLinkIntent';
+  },
+  handle (handlerInput) {
+    const speechText = 'Hyperlink opened!';
+
+    send_message_to_chrome('message: access link');
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .withSimpleCard('Chrome Speak', speechText)
+      .getResponse();
+  }
+};
+
+const RefreshIntentHandler = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+    handlerInput.requestEnvelope.request.intent.name === 'RefreshIntent';
+  },
+  handle (handlerInput) {
+    const speechText = 'Page refreshed!';
+
+    send_message_to_chrome('message: refresh');
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .withSimpleCard('Chrome Speak', speechText)
+      .getResponse();
+  }
+};
+
+const PreviousPageIntentHandler = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+    handlerInput.requestEnvelope.request.intent.name === 'PreviousPageIntent';
+  },
+  handle (handlerInput) {
+    const speechText = 'Previous page reloaded!';
+
+    send_message_to_chrome('message: back');
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .withSimpleCard('Chrome Speak', speechText)
+      .getResponse();
+  }
+};
+
+const ForwardPageIntentHandler = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+    handlerInput.requestEnvelope.request.intent.name === 'ForwardPageIntent';
+  },
+  handle (handlerInput) {
+    const speechText = 'Forward Page!';
+
+    send_message_to_chrome('message: forward');
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -108,15 +193,20 @@ const ErrorHandler = {
 
 const skillBuilder = Alexa.SkillBuilders.custom();
 
-exports.handler = skillBuilder // exports.handler is the entry point of code like int main(){ }
+exports.handler = skillBuilder
   .addRequestHandlers(
-    LaunchRequestHandler, // If canHandle returns true
-    NumberLinksIntentHandler, // else if canHandle returns true
+    LaunchRequestHandler, 
+    NumberLinksIntentHandler,
     CancelLinksIntentHandler,
     AccessLinkIntentHandler,
-    HelpIntentHandler, // else if (from top to bottom)... 
+    RefreshIntentHandler,
+    PreviousPageIntentHandler,
+    ForwardPageIntentHandler,
+    HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler
   )
-  .addErrorHandlers(ErrorHandler) // else (this canHandle is always true)
+  .addErrorHandlers(ErrorHandler)
   .lambda();
+
+
