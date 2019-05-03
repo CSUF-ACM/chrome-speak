@@ -1,92 +1,82 @@
 {
   "interactionModel": {
-    "languageModel": {
-      "invocationName": "chrome speak",
-      "types": [
-
-      ],
-      "intents": [
-        {
-          "name": "AMAZON.CancelIntent",
-          "samples": [
-
-          ]
-        },
-        {
-          "name": "AMAZON.HelpIntent",
-          "samples": [
-
-          ]
-        },
-        {
-          "name": "AMAZON.StopIntent",
-          "samples": [
-
-          ]
-        },
-        {
-          "name": "NumberLinksIntent",
-          "slots": [
-
+      "languageModel": {
+          "invocationName": "chrome speak",
+          "intents": [
+              {
+                  "name": "AMAZON.CancelIntent",
+                  "samples": []
+              },
+              {
+                  "name": "AMAZON.HelpIntent",
+                  "samples": []
+              },
+              {
+                  "name": "AMAZON.StopIntent",
+                  "samples": []
+              },
+              {
+                  "name": "NumberLinksIntent",
+                  "slots": [],
+                  "samples": [
+                      "Number links",
+                      "Number the links",
+                      "Enumerate links"
+                  ]
+              },
+              {
+                  "name": "CancelLinksIntent",
+                  "slots": [],
+                  "samples": [
+                      "cancel",
+                      "cancel links",
+                      "nevermind"
+                  ]
+              },
+              {
+                  "name": "AccessLinkIntent",
+                  "slots": [
+                      {
+                          "name": "number",
+                          "type": "AMAZON.NUMBER"
+                      }
+                  ],
+                  "samples": [
+                      "{number}",
+                      "access {number}",
+                      "open {number}"
+                  ]
+              },
+              {
+                  "name": "RefreshIntent",
+                  "slots": [],
+                  "samples": [
+                      "refresh",
+                      "reload"
+                  ]
+              },
+              {
+                  "name": "PreviousPageIntent",
+                  "slots": [],
+                  "samples": [
+                      "Back",
+                      "Previous page"
+                  ]
+              },
+              {
+                  "name": "ForwardPageIntent",
+                  "slots": [],
+                  "samples": [
+                      "forward",
+                      "forward page"
+                  ]
+              },
+              {
+                  "name": "AMAZON.NavigateHomeIntent",
+                  "samples": []
+              }
           ],
-          "samples": [
-            "Number links",
-            "Number the links",
-            "Enumerate links"
-          ]
-        },
-        {
-          "name": "CancelLinksIntent",
-          "slots": [
-
-          ],
-          "samples": [
-            "cancel",
-            "cancel links",
-            "nevermind"
-          ]
-        },
-        {
-          "name": "AccessLinkIntent",
-          "slots": [
-
-          ],
-          "samples": [
-            "access",
-            "open"
-          ]
-        },
-        {
-          "name": "RefreshIntent",
-          "slots": [
-
-          ],
-          "samples": [
-            "refresh",
-            "reload"
-          ]
-        },
-        {
-          "name": "PreviousPageIntent",
-          "slots": [
-
-          ],
-          "samples": [
-            "Back",
-            "Previous page"
-          ]
-        },
-        {
-          "name": "ForwardPageIntent",
-          "slots": [
-
-          ],
-          "samples": [
-            "forward",
-            "forward page"
-          ]
-        }
-      ]
-    }
+          "types": []
+      }
   }
 }
