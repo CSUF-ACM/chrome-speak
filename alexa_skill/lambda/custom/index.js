@@ -1,7 +1,22 @@
-/* eslint-disable  func-names */
-/* eslint-disable  no-console */
-
+let AWS = require('aws-sdk');
 const Alexa = require('ask-sdk-core');
+
+const iot_data = new AWS.IotData({endpoint: 'a24zga3a3sdrrp-ats.iot.us-east-1.amazonaws.com'});
+
+const send_message_to_chrome = (chrome_message) => {
+    const mqtt_data = {
+        topic: 'topic_1',
+        payload: chrome_message,
+        qos: 0
+    };
+        
+    iot_data.publish(mqtt_data, (error_message, data) => {
+        if(error_message)
+            console.log(error_message);
+        else
+            console.log('Successfully published to IoT server.');
+    });
+} 
 
 const LaunchRequestHandler = {
   canHandle (handlerInput) {
@@ -97,8 +112,8 @@ exports.handler = skillBuilder // exports.handler is the entry point of code lik
   .addRequestHandlers(
     LaunchRequestHandler, // If canHandle returns true
     NumberLinksIntentHandler, // else if canHandle returns true
-    // CancelLinksIntentHandler,
-    // AccessLinkIntentHandler,
+    CancelLinksIntentHandler,
+    AccessLinkIntentHandler,
     HelpIntentHandler, // else if (from top to bottom)... 
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler
