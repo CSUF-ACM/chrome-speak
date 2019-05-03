@@ -72,6 +72,54 @@
                   ]
               },
               {
+                "name": "ScrollUpIntent",
+                "slots": [],
+                "samples": [
+                    "up",
+                    "scroll up"
+                ]
+              },
+              {
+                "name": "ScrollDownIntent",
+                "slots": [],
+                "samples": [
+                    "down",
+                    "scroll down"
+                ]
+              },
+              {
+                "name": "ScrollToBottomIntent",
+                "slots": [],
+                "samples": [
+                    "bottom",
+                    "scroll to bottom"
+                ]
+              },
+              {
+                "name": "ScrollToTopIntent",
+                "slots": [],
+                "samples": [
+                    "top",
+                    "scroll to top"
+                ]
+              },
+              {
+                "name": "AutoScrollUpIntent",
+                "slots": [],
+                "samples": [
+                    "auto scroll up",
+                    "auto up"
+                ]
+              },
+              {
+                "name": "AutoScrollDownIntent",
+                "slots": [],
+                "samples": [
+                    "auto scroll down",
+                    "auto down"
+                ]
+              },
+              {
                   "name": "AMAZON.NavigateHomeIntent",
                   "samples": []
               }

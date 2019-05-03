@@ -136,6 +136,108 @@ const ForwardPageIntentHandler = {
   }
 };
 
+const ScrollUpIntentHandler = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+    handlerInput.requestEnvelope.request.intent.name === 'ScrollUpIntent';
+  },
+  handle (handlerInput) {
+    const speechText = 'Scrolling up!';
+
+    send_message_to_chrome('{"command": "scroll up"}');
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .getResponse();
+  }
+};
+
+const ScrollDownIntentHandler = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+    handlerInput.requestEnvelope.request.intent.name === 'ScrollDownIntent';
+  },
+  handle (handlerInput) {
+    const speechText = 'Scrolling down!';
+
+    send_message_to_chrome('{"command": "scroll down"}');
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .getResponse();
+  }
+};
+
+const ScrollToBottomIntentHandler = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+    handlerInput.requestEnvelope.request.intent.name === 'ScrollToBottomIntent';
+  },
+  handle (handlerInput) {
+    const speechText = 'Hit rock bottom!';
+
+    send_message_to_chrome('{"command": "scroll to bottom"}');
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .getResponse();
+  }
+};
+
+const ScrollToTopInetntHandler = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+    handlerInput.requestEnvelope.request.intent.name === 'ScrollToTopIntent';
+  },
+  handle (handlerInput) {
+    const speechText = 'Scrolling to top!';
+
+    send_message_to_chrome('{"command": "scroll to top"}');
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .getResponse();
+  }
+};
+
+const AutoScrollUpIntentHandler = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+    handlerInput.requestEnvelope.request.intent.name === 'AutoScrollUpIntent';
+  },
+  handle (handlerInput) {
+    const speechText = 'Auto scrolling up!';
+
+    send_message_to_chrome('{"command": "auto scroll up"}');
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .getResponse();
+  }
+};
+
+const AutoScrollDownIntentHandler = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+    handlerInput.requestEnvelope.request.intent.name === 'AutoScrollDownIntent';
+  },
+  handle (handlerInput) {
+    const speechText = 'Auto scrolling Down!';
+
+    send_message_to_chrome('{"command": "auto scroll down"}');
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .getResponse();
+  }
+};
+
 const HelpIntentHandler = {
   canHandle (handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
@@ -203,6 +305,12 @@ exports.handler = skillBuilder
     RefreshIntentHandler,
     PreviousPageIntentHandler,
     ForwardPageIntentHandler,
+    ScrollUpIntentHandler,
+    ScrollDownIntentHandler,
+    ScrollToBottomIntentHandler,
+    ScrollToTopInetntHandler,
+    AutoScrollUpIntentHandler,
+    AutoScrollDownIntentHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler
