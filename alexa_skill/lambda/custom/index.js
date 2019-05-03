@@ -41,7 +41,7 @@ const NumberLinksIntentHandler = {
   handle (handlerInput) {
     const speechText = 'Links numbered!';
 
-    send_message_to_chrome('message: number links');
+    send_message_to_chrome('{"command": "number links"}');
 
     response = handlerInput.responseBuilder.speak(speechText).reprompt(speechText).getResponse();
     // response = handlerInput.responseBuilder.getResponse();
@@ -58,7 +58,7 @@ const CancelLinksIntentHandler = {
   handle (handlerInput) {
     const speechText = 'Links canceled!';
 
-    send_message_to_chrome('message: cancel links');
+    send_message_to_chrome('{"command": "cancel links"}');
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -74,8 +74,9 @@ const AccessLinkIntentHandler = {
   },
   handle (handlerInput) {
     const speechText = 'Hyperlink opened!';
+    const link_number = handlerInput.requestEnvelope.request.intent.slots.number.value;
 
-    send_message_to_chrome('message: access link');
+    send_message_to_chrome('{"command": "access link", "link_number": ' + link_number + '}');
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -92,7 +93,7 @@ const RefreshIntentHandler = {
   handle (handlerInput) {
     const speechText = 'Page refreshed!';
 
-    send_message_to_chrome('message: refresh');
+    send_message_to_chrome('{"command": "refresh"}');
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -109,7 +110,7 @@ const PreviousPageIntentHandler = {
   handle (handlerInput) {
     const speechText = 'Previous page reloaded!';
 
-    send_message_to_chrome('message: back');
+    send_message_to_chrome('{"command": "back"}');
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -126,7 +127,109 @@ const ForwardPageIntentHandler = {
   handle (handlerInput) {
     const speechText = 'Forward Page!';
 
-    send_message_to_chrome('message: forward');
+    send_message_to_chrome('{"command": "forward"}');
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .getResponse();
+  }
+};
+
+const ScrollUpIntentHandler = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+    handlerInput.requestEnvelope.request.intent.name === 'ScrollUpIntent';
+  },
+  handle (handlerInput) {
+    const speechText = 'Scrolling up!';
+
+    send_message_to_chrome('{"command": "scroll up"}');
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .getResponse();
+  }
+};
+
+const ScrollDownIntentHandler = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+    handlerInput.requestEnvelope.request.intent.name === 'ScrollDownIntent';
+  },
+  handle (handlerInput) {
+    const speechText = 'Scrolling down!';
+
+    send_message_to_chrome('{"command": "scroll down"}');
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .getResponse();
+  }
+};
+
+const ScrollToBottomIntentHandler = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+    handlerInput.requestEnvelope.request.intent.name === 'ScrollToBottomIntent';
+  },
+  handle (handlerInput) {
+    const speechText = 'Hit rock bottom!';
+
+    send_message_to_chrome('{"command": "scroll to bottom"}');
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .getResponse();
+  }
+};
+
+const ScrollToTopInetntHandler = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+    handlerInput.requestEnvelope.request.intent.name === 'ScrollToTopIntent';
+  },
+  handle (handlerInput) {
+    const speechText = 'Scrolling to top!';
+
+    send_message_to_chrome('{"command": "scroll to top"}');
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .getResponse();
+  }
+};
+
+const AutoScrollUpIntentHandler = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+    handlerInput.requestEnvelope.request.intent.name === 'AutoScrollUpIntent';
+  },
+  handle (handlerInput) {
+    const speechText = 'Auto scrolling up!';
+
+    send_message_to_chrome('{"command": "auto scroll up"}');
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .getResponse();
+  }
+};
+
+const AutoScrollDownIntentHandler = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+    handlerInput.requestEnvelope.request.intent.name === 'AutoScrollDownIntent';
+  },
+  handle (handlerInput) {
+    const speechText = 'Auto scrolling Down!';
+
+    send_message_to_chrome('{"command": "auto scroll down"}');
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -141,7 +244,7 @@ const HelpIntentHandler = {
     handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
   },
   handle (handlerInput) {
-    const speechText = 'Provide help statement';
+    const speechText = 'Help menu still needs to be created.';
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -183,8 +286,9 @@ const ErrorHandler = {
   handle (handlerInput, error) {
     console.log(`Error handled: ${error.message}`);
 
+    const speechText = 'Sorry, I\'m a little nervous right now. What was the command again?';
     return handlerInput.responseBuilder
-      .speak('Sorry, I I\'m a little nervous right now. What was the command again?')
+      .speak(speechText)
       .reprompt(speechText)
       .getResponse();
   }
@@ -201,11 +305,15 @@ exports.handler = skillBuilder
     RefreshIntentHandler,
     PreviousPageIntentHandler,
     ForwardPageIntentHandler,
+    ScrollUpIntentHandler,
+    ScrollDownIntentHandler,
+    ScrollToBottomIntentHandler,
+    ScrollToTopInetntHandler,
+    AutoScrollUpIntentHandler,
+    AutoScrollDownIntentHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler
   )
   .addErrorHandlers(ErrorHandler)
   .lambda();
-
-
