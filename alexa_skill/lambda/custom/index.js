@@ -238,6 +238,23 @@ const AutoScrollDownIntentHandler = {
   }
 };
 
+const GoogleQueryIntent = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+    handlerInput.requestEnvelope.request.intent.name === 'GoogleQueryIntent';
+  },
+  handle (handlerInput) {
+    const speechText = 'Googled this for you!';
+
+    send_message_to_chrome('{"command": "google query"}');
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .getResponse();
+  }
+};
+
 const HelpIntentHandler = {
   canHandle (handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
@@ -311,6 +328,7 @@ exports.handler = skillBuilder
     ScrollToTopInetntHandler,
     AutoScrollUpIntentHandler,
     AutoScrollDownIntentHandler,
+    GoogleQueryIntent,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler
