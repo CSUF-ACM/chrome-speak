@@ -46,7 +46,8 @@ socket.on('message', function(msg){         //Listens for a messsage event, msg 
         chrome.tabs.reload();
 
     } else if (parsedMsg.command == "google query") {
-        chrome.tabs.update({ url: "http://en.wikipedia.org"});
+
+        chrome.tabs.update({ url: "https://www.google.com/search?q=" + parsedMsg.query});
     } else {
         chrome.tabs.query({active: true, currentWindow: true}, function(tabs) { // Tell the tab the user has currently opened to...
             console.log("I sent the message");
