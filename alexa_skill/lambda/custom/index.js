@@ -245,8 +245,9 @@ const GoogleQueryIntent = {
   },
   handle (handlerInput) {
     const speechText = 'Googled this for you!';
+    var query = handlerInput.requestEnvelope.request.intent.slots.Query.value;
 
-    send_message_to_chrome('{"command": "google query"}');
+    send_message_to_chrome('{"command": "google query", "query": "' + query + '"}');
 
     return handlerInput.responseBuilder
       .speak(speechText)

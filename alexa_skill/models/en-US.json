@@ -128,7 +128,8 @@
                     }
                 ],
                 "samples": [
-                    "Google {Query}"
+                    "Google {Query}",
+                    "Search {Query}"
                 ]
               },
               {
