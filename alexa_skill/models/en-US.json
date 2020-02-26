@@ -120,6 +120,19 @@
                 ]
               },
               {
+                "name": "GoogleQueryIntent",
+                "slots": [
+                    {
+                        "name": "Query",
+                        "type": "AMAZON.SearchQuery"
+                    }
+                ],
+                "samples": [
+                    "Google {Query}",
+                    "Search {Query}"
+                ]
+              },
+              {
                   "name": "AMAZON.NavigateHomeIntent",
                   "samples": []
               }

@@ -28,11 +28,13 @@ scroll_content.js
 console.log("Running");
 var socket = io('http://localhost:3000');   //Connects to server
 socket.on('message', function(msg){         //Listens for a messsage event, msg is a JSON object
+
     var parsedMsg = JSON.parse(msg);
-    console.log(parsedMsg);                       
+    console.log(parsedMsg);                  
                                             //Content scripts do not have access to chrome.tabs
                                             // Therefore reload, forward, and back must be execeuted in this background script
                                             //Click this link for more information: https://stackoverflow.com/questions/15034859/chrome-tabs-returns-undefined-in-content-script
+    console.log(typeof parsedMsg);
     if(parsedMsg.command == "back") {
         chrome.tabs.goBack(); 
     }
@@ -43,8 +45,10 @@ socket.on('message', function(msg){         //Listens for a messsage event, msg 
     else if(parsedMsg.command == "refresh") {
         chrome.tabs.reload();
 
-    }
-    else {
+    } else if (parsedMsg.command == "google query") {
+
+        chrome.tabs.update({ url: "https://www.google.com/search?q=" + parsedMsg.query});
+    } else {
         chrome.tabs.query({active: true, currentWindow: true}, function(tabs) { // Tell the tab the user has currently opened to...
             console.log("I sent the message");
             chrome.tabs.sendMessage(tabs[0].id, parsedMsg); // number the links (sends message to all content scripts).

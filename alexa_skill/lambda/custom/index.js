@@ -238,6 +238,24 @@ const AutoScrollDownIntentHandler = {
   }
 };
 
+const GoogleQueryIntent = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+    handlerInput.requestEnvelope.request.intent.name === 'GoogleQueryIntent';
+  },
+  handle (handlerInput) {
+    const speechText = 'Googled this for you!';
+    var query = handlerInput.requestEnvelope.request.intent.slots.Query.value;
+
+    send_message_to_chrome('{"command": "google query", "query": "' + query + '"}');
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .getResponse();
+  }
+};
+
 const HelpIntentHandler = {
   canHandle (handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
@@ -311,6 +329,7 @@ exports.handler = skillBuilder
     ScrollToTopInetntHandler,
     AutoScrollUpIntentHandler,
     AutoScrollDownIntentHandler,
+    GoogleQueryIntent,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler
